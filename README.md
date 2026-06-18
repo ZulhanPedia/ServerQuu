@@ -7,7 +7,7 @@ ServerQuu adalah platform Virtual File System (VFS) dan Cloud Storage Aggregator
 ---
 
 ### 📍 Navigasi
-[Persiapan & Instalasi](#-persiapan--instalasi) • [Berkas Konfigurasi](#%EF%B8%8F-berkas-konfigurasi) • [Panduan Kredensial](#-panduan-mendapatkan-kredensial-google-drive-api) • [Cara Menjalankan](#-cara-menjalankan-aplikasi) • [Hak Cipta](#-hak-cipta--kontribusi)
+[Persiapan & Instalasi](#-persiapan--instalasi) • [Berkas Konfigurasi](#berkas-konfigurasi) • [Panduan Kredensial](#panduan-mendapatkan-kredensial-google-drive-api) • [Cara Menjalankan](#cara-menjalankan-aplikasi) • [Hak Cipta](#hak-cipta--kontribusi)
 
 ---
 
@@ -47,35 +47,55 @@ Buat file ini di direktori yang sama dengan isi awal sebagai berikut:
 
 
 🔑 Panduan Mendapatkan Kredensial Google Drive API
-<details>
-<summary><b>Bagian 1: Mendapatkan Client ID dan Client Secret (Klik untuk Ekspand)</b></summary>
-Buka Google Cloud Console.
-Buat proyek baru (Create Project) dengan nama bebas (misal: ServerQuu-Aggregator).
-Cari Google Drive API di kolom pencarian, lalu klik Enable (Aktifkan).
-Pilih menu OAuth Consent Screen (Layar Persetujuan OAuth) di sebelah kiri:
-Pilih tipe user External, klik Create.
-Lengkapi kolom nama aplikasi, email dukungan, dan email developer.
-Pada halaman Test Users, klik Add Users dan masukkan alamat email Google Drive yang ingin Anda gunakan. (Langkah ini WAJIB agar API Anda mendapat izin akses).
-Pilih menu Credentials (Kredensial) di sebelah kiri:
-Klik tombol + Create Credentials -> pilih OAuth Client ID.
-Pilih tipe aplikasi: Desktop Application (Aplikasi Desktop).
-Klik Create, lalu salin nilai Client ID dan Client Secret Anda.
-</details>
-<details>
-<summary><b>Bagian 2: Mendapatkan Refresh Token via OAuth Playground (Klik untuk Ekspand)</b></summary>
-Buka halaman Google OAuth Playground.
-Klik tombol Gear (Settings Icon) di pojok kanan atas:
-Centang pilihan Use your own OAuth credentials.
-Masukkan OAuth Client ID dan OAuth Client Secret yang Anda buat tadi.
-Di panel sebelah kiri (Step 1: Select & authorize APIs):
-Masukkan scope: https://www.googleapis.com/auth/drive
-Klik tombol hijau Authorize APIs.
-Login menggunakan email Google Drive Anda dan setujui semua izin keamanan yang diminta.
-Pada Step 2:
-Klik tombol biru Exchange authorization code for tokens.
-Salin nilai Refresh Token yang dihasilkan di panel bawah, lalu masukkan ke dalam config.json.
-</details>
-↑ Kembali ke atas
+### Bagian 1: Setup Google Cloud Project & API Kredensial
+
+1. **Buat Proyek Baru**
+   * Masuk ke Google Cloud Console.
+   * Buat proyek baru (*Create Project*) dengan nama bebas (misal: `ServerQuu-Aggregator`).
+
+2. **Aktifkan Google Drive API**
+   * Cari **Google Drive API** di kolom pencarian utama.
+   * Klik **Enable** (Aktifkan).
+
+3. **Konfigurasi OAuth Consent Screen**
+   * Pilih menu **OAuth Consent Screen** (Layar Persetujuan OAuth) di bilah sebelah kiri.
+   * Pilih tipe user **External**, lalu klik **Create**.
+   * Lengkapi kolom yang wajib diisi: *Nama Aplikasi*, *Email Dukungan*, dan *Email Developer*.
+
+4. **Atur Test Users (Penting!)**
+   * Pada halaman **Test Users**, klik **Add Users**.
+   * Masukkan alamat email Google Drive yang ingin Anda gunakan. 
+   > ⚠️ **WAJIB:** Langkah ini harus dilakukan agar API Anda mendapatkan izin akses selama status proyek masih dalam mode *Testing*.
+
+5. **Buat Kredensial (OAuth Client ID)**
+   * Pilih menu **Credentials** (Kredensial) di bilah sebelah kiri.
+   * Klik tombol **+ Create Credentials** -> pilih **OAuth Client ID**.
+   * Pilih tipe aplikasi: **Desktop Application** (Aplikasi Desktop).
+   * Klik **Create**.
+   * Salin dan simpan nilai **Client ID** dan **Client Secret** Anda.
+
+---
+
+### Bagian 2: Mendapatkan Refresh Token via OAuth Playground
+
+1. **Buka OAuth Playground**
+   * Akses halaman [Google OAuth Playground](https://developers.google.com/oauthplayground/).
+
+2. **Konfigurasi Kredensial Kustom**
+   * Klik tombol **Gear** (Settings Icon) di pojok kanan atas.
+   * Centang pilihan **Use your own OAuth credentials**.
+   * Masukkan **OAuth Client ID** dan **OAuth Client Secret** yang sudah Anda buat di Bagian 1.
+
+3. **Otorisasi API (Step 1)**
+   * Di panel sebelah kiri (**Step 1: Select & authorize APIs**), masukkan scope berikut di kolom input:
+     `https://www.googleapis.com/auth/drive`
+   * Klik tombol hijau **Authorize APIs**.
+   * Login menggunakan akun Google Drive Anda dan setujui semua izin keamanan yang diminta.
+
+4. **Tukarkan Kode dengan Token (Step 2)**
+   * Pada **Step 2**, klik tombol biru **Exchange authorization code for tokens**.
+   * Salin nilai **Refresh Token** yang dihasilkan di panel bawah.
+   * Masukkan nilai tersebut ke dalam file `config.json` Anda.
 
 🚀 Cara Menjalankan Aplikasi
 Langkah 1: Jalankan Server Node.js
@@ -83,7 +103,10 @@ node server.js
 
 Aplikasi berjalan secara lokal di port http://localhost:3000. PIN masuk awal Anda adalah 1234.
 Langkah 2: Onlinekan Menggunakan Cloudflare Tunnel (Custom Domain)
-Gunakan metode ini agar server di HP jadul Anda dapat diakses secara online dari mana saja dengan domain pribadi Anda sendiri, dilengkapi dengan sertifikat SSL/HTTPS gratis yang aman secara permanen tanpa memerlukan port forwarding:
+Gunakan metode ini agar server di HP jadul Anda dapat diakses secara online dari mana saja dengan domain pribadi Anda sendiri, dilengkapi dengan sertifikat SSL/HTTPS gratis yang aman secara permane## Panduan Konfigurasi Google Drive API & Refresh Token
+
+Ikuti langkah-langkah di bawah ini untuk melakukan setup Google Cloud Project dan mendapatkan kredensial yang dibutuhkan.
+n tanpa memerlukan port forwarding:
 Menghubungkan Domain ke Cloudflare
 Pastikan Anda sudah mendaftarkan domain pribadi Anda di Cloudflare Dashboard dan mengarahkan Name Server (NS) domain Anda ke Cloudflare.
 Install Cloudflared di Termux
