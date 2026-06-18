@@ -391,7 +391,7 @@ app.get('/', (req, res) => {
                 <div id="loginFallbackIcon" class="w-16 h-16 bg-sky-50 text-sky-600 rounded-2xl flex items-center justify-center text-3xl shadow-inner">🔐</div>
             </div>
             <h2 class="text-2xl font-bold text-slate-900 mb-2">Akses Terkunci</h2>
-            <p class="text-slate-500 text-sm mb-6">Masukkan PIN keamanan untuk mengelola Multi-Drive.</p>
+            <p class="text-slate-500 text-sm mb-6">Masukkan PIN keamanan untuk mengelola ServerQuu.</p>
             <div class="mb-6">
                 <input type="password" id="pinInput" placeholder="••••" maxlength="8" class="w-full text-center text-3xl tracking-widest font-bold py-3 px-4 border-2 border-slate-100 rounded-2xl focus:outline-none focus:border-sky-600 focus:ring-4 focus:ring-sky-100 transition-all bg-slate-50/50" autofocus>
                 <div id="pinError" class="text-rose-500 text-sm mt-3 font-semibold hidden">PIN salah!</div>
@@ -899,7 +899,7 @@ app.get('/', (req, res) => {
 // Menghidupkan Web Server di Termux HP Jadul
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`===================================================`);
-    console.log(`   ServerQuu Multi-Drive is active on Android!    `);
+    console.log(`   ServerQuu is active on Android!    `);
     console.log(`   Author       : Izzuddin Badawi             `);
     console.log(`   Telegram     : @Hyperos_id            `);
     console.log(`   Version      : 1.0.0 (Beta)            `);
