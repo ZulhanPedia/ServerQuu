@@ -21,7 +21,7 @@ Jalankan perintah berikut di aplikasi Termux Anda untuk mempersiapkan lingkungan
 pkg update && pkg upgrade -y
 pkg install nodejs git -y
 Kloning Repositori & Instalasi
-git clone [https://github.com/username-kamu/ServerQuu.git](https://github.com/username-kamu/ServerQuu.git)
+git clone [https://github.com/ZulhanPedia/ServerQuu/](https://github.com/ZulhanPedia/ServerQuu)
 cd ServerQuu
 npm install
 Catatan: Letakkan berkas gambar logo kustom Anda dengan nama logo.png di dalam folder static agar logo ServerQuu termuat sempurna.
