@@ -1,5 +1,3 @@
-☁️ ServerQuu
-
 <p align="center">
   <img src="static/logo.png" alt="ServerQuu Logo" width="200">
 </p><p align="center">
@@ -10,7 +8,7 @@
   <img src="https://img.shields.io/badge/Platform-Termux-blue?style=for-the-badge">
   <img src="https://img.shields.io/badge/Google%20Drive-API-orange?style=for-the-badge">
   <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge">
-</p>---
+</p>
 
 📖 Tentang ServerQuu
 
