@@ -50,17 +50,18 @@ Sebelum memulai, pastikan Anda memiliki:
 🚀 Instalasi
 
 1. Persiapan Lingkungan
-
+ ```
 pkg update && pkg upgrade -y
 pkg install nodejs git -y
-
+```
 2. Clone Repository
-
+```
 git clone https://github.com/ZulhanPedia/ServerQuu
 
 cd ServerQuu
 
 npm install
+```
 
 3. Logo Kustom (Opsional)
 
@@ -134,18 +135,24 @@ Disarankan untuk segera mengganti PIN setelah instalasi pertama.
 🌐 Cloudflare Tunnel
 
 Instalasi Cloudflared
+```
 
 pkg install cloudflared -y
+```
 
 Login ke Cloudflare
 
+```
 cloudflared tunnel login
 
+```
 Ikuti proses otorisasi hingga berhasil.
 
-Membuat Tunnel
+Membuat Tunnel (bisa diganti sesuai keinginan)
 
-cloudflared tunnel create serverquu-tunnel
+
+cloudflared tunnel create servertermux  <= ganti 
+
 
 Catat UUID yang dihasilkan.
 
@@ -153,7 +160,9 @@ Membuat Konfigurasi Tunnel
 
 Buat file:
 
+```
 nano ~/.cloudflared/config.yml
+```
 
 Isi dengan konfigurasi berikut:
 
@@ -168,22 +177,23 @@ ingress:
 ```
 
 Membuat DNS Record
+```
 
 cloudflared tunnel route dns serverquu-tunnel drive.domainanda.com
-
+```
 Menjalankan Tunnel
-
+```
 nohup cloudflared tunnel run serverquu-tunnel > /dev/null 2>&1 &
-
+```
 Sekarang ServerQuu dapat diakses melalui:
-
+```
 https://drive.domainanda.com
-
+```
 ---
 
 📁 Struktur Direktori
 
-ServerQuu/
+```ServerQuu/
 ├── static/
 │   └── logo.png
 ├── config.json
@@ -192,7 +202,7 @@ ServerQuu/
 ├── package.json
 ├── package-lock.json
 └── node_modules/
-
+```
 ---
 
 🛡️ Keamanan
