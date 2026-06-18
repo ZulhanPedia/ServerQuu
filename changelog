@@ -1,0 +1,14 @@
+Changelog:
+
+```teks
+• Pemilihan folder tujuan unggah berkas secara langsung dan interaktif
+• Pembuatan folder baru secara instan di Google Drive melalui Web UI
+• Unggah berkas langsung (Direct Client-Side) ke API Google Drive untuk kecepatan maksimal
+• Pengalihan unduhan (Redirect Link) ke Google CDN untuk bypass server dan anti-CAPTCHA
+• Kolom pencarian berkas (live search filter) instan pada File Explorer Virtual
+• Penambahan & penghapusan akun Google Drive langsung dari menu Pengaturan
+• Perbaikan sistem database auto-recovery untuk mengatasi error pada menu Riwayat/Log
+• Desain antarmuka premium dengan palet warna Sky Blue & Deep Navy yang selaras dengan logo
+• Sinkronisasi otomatis array logs dan files pada db.json untuk mencegah server crash
+• Perbaikan fitur keamanan PIN (kosong otomatis jika salah) dan integrasi token OAuth dinamis
+```
