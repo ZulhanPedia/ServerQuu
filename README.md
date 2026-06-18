@@ -45,3 +45,67 @@ Buat file ini di direktori yang sama dengan isi awal sebagai berikut:
   "logs": []
 }
 
+
+🔑 Panduan Mendapatkan Kredensial Google Drive API
+<details>
+<summary><b>Bagian 1: Mendapatkan Client ID dan Client Secret (Klik untuk Ekspand)</b></summary>
+Buka Google Cloud Console.
+Buat proyek baru (Create Project) dengan nama bebas (misal: ServerQuu-Aggregator).
+Cari Google Drive API di kolom pencarian, lalu klik Enable (Aktifkan).
+Pilih menu OAuth Consent Screen (Layar Persetujuan OAuth) di sebelah kiri:
+Pilih tipe user External, klik Create.
+Lengkapi kolom nama aplikasi, email dukungan, dan email developer.
+Pada halaman Test Users, klik Add Users dan masukkan alamat email Google Drive yang ingin Anda gunakan. (Langkah ini WAJIB agar API Anda mendapat izin akses).
+Pilih menu Credentials (Kredensial) di sebelah kiri:
+Klik tombol + Create Credentials -> pilih OAuth Client ID.
+Pilih tipe aplikasi: Desktop Application (Aplikasi Desktop).
+Klik Create, lalu salin nilai Client ID dan Client Secret Anda.
+</details>
+<details>
+<summary><b>Bagian 2: Mendapatkan Refresh Token via OAuth Playground (Klik untuk Ekspand)</b></summary>
+Buka halaman Google OAuth Playground.
+Klik tombol Gear (Settings Icon) di pojok kanan atas:
+Centang pilihan Use your own OAuth credentials.
+Masukkan OAuth Client ID dan OAuth Client Secret yang Anda buat tadi.
+Di panel sebelah kiri (Step 1: Select & authorize APIs):
+Masukkan scope: https://www.googleapis.com/auth/drive
+Klik tombol hijau Authorize APIs.
+Login menggunakan email Google Drive Anda dan setujui semua izin keamanan yang diminta.
+Pada Step 2:
+Klik tombol biru Exchange authorization code for tokens.
+Salin nilai Refresh Token yang dihasilkan di panel bawah, lalu masukkan ke dalam config.json.
+</details>
+↑ Kembali ke atas
+
+🚀 Cara Menjalankan Aplikasi
+Langkah 1: Jalankan Server Node.js
+node server.js
+
+Aplikasi berjalan secara lokal di port http://localhost:3000. PIN masuk awal Anda adalah 1234.
+Langkah 2: Onlinekan Menggunakan Cloudflare Tunnel (Custom Domain)
+Gunakan metode ini agar server di HP jadul Anda dapat diakses secara online dari mana saja dengan domain pribadi Anda sendiri, dilengkapi dengan sertifikat SSL/HTTPS gratis yang aman secara permanen tanpa memerlukan port forwarding:
+Menghubungkan Domain ke Cloudflare
+Pastikan Anda sudah mendaftarkan domain pribadi Anda di Cloudflare Dashboard dan mengarahkan Name Server (NS) domain Anda ke Cloudflare.
+Install Cloudflared di Termux
+Buka sesi Termux baru, lalu jalankan perintah instalasi berikut:
+   pkg install cloudflared -y
+   cloudflared tunnel login
+Buka tautan otorisasi yang muncul di browser Anda, pilih domain pribadi Anda, lalu klik Authorize. Berkas sertifikat keamanan cert.pem akan diunduh secara otomatis ke folder ~/.cloudflared/.
+
+Buat Tunnel Baru
+   nano ~/.cloudflared/config.yml
+
+Salin ID Tunnel (UUID) yang muncul di layar Termux (berupa kombinasi panjang huruf dan angka).
+Konfigurasi config.yml
+Buat berkas konfigurasi tunnel di folder Cloudflare:
+   nano ~/.cloudflared/config.yml
+Salin baris konfigurasi berikut (sesuaikan <UUID-TUNNEL-ANDA> dan ganti drive.domainanda.com dengan subdomain pilihan Anda):
+   tunnel: <UUID-TUNNEL-ANDA>
+   credentials-file: /data/data/com.termux/files/home/.cloudflared/<UUID-TUNNEL-ANDA>.json
+
+   ingress:
+  - hostname: Sub.domaain.kamu
+    service: http://localhost:3000
+  - service: http_status:404
+
+
