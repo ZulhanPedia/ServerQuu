@@ -61,6 +61,8 @@ git clone https://github.com/ZulhanPedia/ServerQuu
 cd ServerQuu
 
 npm install
+
+node server.js
 ```
 
 3. Logo Kustom (Opsional)
