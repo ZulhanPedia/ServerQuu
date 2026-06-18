@@ -42,28 +42,6 @@ config.json (Konfigurasi Akun Google Drive)
 
 Seluruh kredensial Google Drive disimpan pada file ini agar tidak terekspos melalui browser.
 
-[
-  {
-    "id": 1,
-    "email": "akun_utama@gmail.com",
-    "client_id": "CLIENT_ID_GOOGLE_ANDA",
-    "client_secret": "CLIENT_SECRET_GOOGLE_ANDA",
-    "refresh_token": "REFRESH_TOKEN_AKUN_TERSEBUT"
-  }
-]
-
----
-
-db.json (Database Virtual)
-
-Buat file "db.json" pada direktori utama proyek dengan isi awal berikut:
-
-{
-  "pin": "1234",
-  "files": [],
-  "logs": []
-}
-
 ---
 
 🔑 Mendapatkan Kredensial Google Drive API
