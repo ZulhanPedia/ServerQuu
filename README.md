@@ -1,144 +1,52 @@
-☁️ ServerQuu - Multi-Drive Cloud Storage Aggregator
-
-ServerQuu adalah platform Virtual File System (VFS) dan Cloud Storage Aggregator berbasis Node.js yang dirancang untuk menggabungkan beberapa akun Google Drive menjadi satu sistem penyimpanan virtual yang mudah dikelola. ServerQuu dapat berjalan secara mandiri di Termux (Android) sehingga sangat cocok digunakan pada perangkat lama atau server pribadi berdaya rendah.
-
----
-
-✨ Fitur Utama
-
-- 📁 Agregasi multi-akun Google Drive
-- ☁️ Virtual File System (VFS)
-- 📱 Berjalan langsung di Android menggunakan Termux
-- 🔒 Login menggunakan PIN
-- 📊 Pencatatan aktivitas (logs)
-- ⚡ Ringan dan hemat daya
-- 🌐 Dapat diakses secara online menggunakan Cloudflare Tunnel
-- 🔐 HTTPS gratis tanpa port forwarding
-
----
-
-🚀 Instalasi
-
-1. Persiapan Lingkungan
-
-Jalankan perintah berikut di aplikasi Termux:
-
-pkg update && pkg upgrade -y
-pkg install nodejs git -y
-
-2. Clone Repository
-
-git clone https://github.com/ZulhanPedia/ServerQuu
-cd ServerQuu
-npm install
-
-«Catatan: Letakkan file logo kustom dengan nama "logo.png" ke dalam folder "static/" agar logo dapat ditampilkan dengan sempurna pada antarmuka ServerQuu.»
-
----
-
-⚙️ Konfigurasi
-
-config.json (Konfigurasi Akun Google Drive)
-
-Seluruh kredensial Google Drive disimpan pada file ini agar tidak terekspos melalui browser.
-
----
-
-🔑 Mendapatkan Kredensial Google Drive API
-
-A. Membuat Client ID & Client Secret
-
-1. Buka Google Cloud Console.
-2. Buat project baru (misalnya: ServerQuu-Aggregator).
-3. Aktifkan Google Drive API.
-4. Masuk ke menu OAuth Consent Screen.
-5. Pilih tipe pengguna External.
-6. Isi nama aplikasi, email dukungan, dan email developer.
-7. Pada bagian Test Users, tambahkan seluruh akun Google Drive yang akan digunakan.
-8. Masuk ke menu Credentials.
-9. Klik Create Credentials → OAuth Client ID.
-10. Pilih Desktop Application.
-11. Simpan dan catat nilai Client ID serta Client Secret.
-
----
-
-B. Mendapatkan Refresh Token
-
-1. Buka Google OAuth Playground.
-2. Klik ikon ⚙️ (Settings).
-3. Aktifkan Use your own OAuth credentials.
-4. Masukkan Client ID dan Client Secret yang telah dibuat.
-5. Pada kolom Scope masukkan:
-
-https://www.googleapis.com/auth/drive
-
-6. Klik Authorize APIs.
-7. Login menggunakan akun Google Drive.
-8. Berikan seluruh izin yang diminta.
-9. Klik Exchange authorization code for tokens.
-10. Salin nilai Refresh Token dan masukkan ke dalam "config.json".
-
----
-
-▶️ Menjalankan Server
-
-Jalankan aplikasi menggunakan:
-
-node server.js
-
-Secara default aplikasi akan berjalan pada:
-
-http://localhost:3000
-
-PIN login bawaan:
-
-1234
-
-Disarankan untuk segera mengganti PIN setelah instalasi pertama.
-
----
-
-🌐 Menghubungkan ke Internet dengan Cloudflare Tunnel
-
-Dengan Cloudflare Tunnel, ServerQuu dapat diakses dari mana saja menggunakan domain pribadi tanpa membuka port router dan tanpa IP publik.
-
-1. Hubungkan Domain ke Cloudflare
-
-Pastikan domain Anda telah terdaftar dan menggunakan Name Server Cloudflare.
-
----
-
-2. Instal Cloudflared
-
-pkg install cloudflared -y
-
----
-
-3. Login ke Cloudflare
-
-cloudflared tunnel login
-
 ☁️ ServerQuu
 
-Privat • Aman • Terpercaya
+<p align="center">
+  <img src="static/logo.png" alt="ServerQuu Logo" width="200">
+</p><p align="center">
+  <strong>Multi-Drive Cloud Storage Aggregator</strong><br>
+  Privat • Aman • Terpercaya
+</p><p align="center">
+  <img src="https://img.shields.io/badge/Node.js-18+-green?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Platform-Termux-blue?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Google%20Drive-API-orange?style=for-the-badge">
+  <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge">
+</p>---
 
-ServerQuu adalah platform Virtual File System (VFS) dan Multi-Drive Cloud Storage Aggregator berbasis Node.js yang memungkinkan Anda menggabungkan beberapa akun Google Drive ke dalam satu sistem penyimpanan virtual yang terpusat.
+📖 Tentang ServerQuu
 
-Dirancang khusus agar dapat berjalan secara ringan di Termux (Android), ServerQuu sangat cocok digunakan pada perangkat lama, HP cadangan, atau server pribadi berdaya rendah.
+ServerQuu adalah platform Virtual File System (VFS) dan Multi-Drive Cloud Storage Aggregator berbasis Node.js yang memungkinkan beberapa akun Google Drive digabungkan ke dalam satu sistem penyimpanan virtual.
+
+ServerQuu dirancang khusus agar dapat berjalan dengan stabil pada Termux Android, sehingga perangkat Android lama dapat dimanfaatkan sebagai server cloud pribadi yang ringan dan hemat daya.
 
 ---
 
-✨ Fitur Utama
+📑 Daftar Isi
 
-- ☁️ Agregasi banyak akun Google Drive
+- "Fitur" (#-fitur)
+- "Persyaratan" (#-persyaratan)
+- "Instalasi" (#-instalasi)
+- "Konfigurasi" (#️-konfigurasi)
+- "Google Drive API" (#-google-drive-api)
+- "Menjalankan Server" (#️-menjalankan-server)
+- "Cloudflare Tunnel" (#-cloudflare-tunnel)
+- "Struktur Direktori" (#-struktur-direktori)
+- "Keamanan" (#️-keamanan)
+- "Kontribusi" (#-kontribusi)
+- "Lisensi" (#-lisensi)
+
+---
+
+✨ Fitur
+
+- ☁️ Multi Google Drive Aggregator
 - 📂 Virtual File System (VFS)
-- 📱 Berjalan langsung di Android melalui Termux
-- 🔒 Sistem keamanan berbasis PIN
-- 📊 Pencatatan aktivitas dan log
-- ⚡ Ringan dan hemat sumber daya
-- 🌐 Dapat diakses dari mana saja menggunakan Cloudflare Tunnel
+- 📱 Berjalan di Android menggunakan Termux
+- 🔒 Login menggunakan PIN
+- 📊 Activity Logging
+- ⚡ Ringan dan hemat daya
+- 🌐 Akses online menggunakan Cloudflare Tunnel
 - 🔐 HTTPS gratis tanpa port forwarding
-- 🏠 Cocok untuk server pribadi dan backup data
+- 🏠 Cocok untuk cloud storage pribadi
 
 ---
 
@@ -147,223 +55,7 @@ Dirancang khusus agar dapat berjalan secara ringan di Termux (Android), ServerQu
 Sebelum memulai, pastikan Anda memiliki:
 
 - Android dengan aplikasi Termux
-- Node.js
-- Git
-- Akun Google Drive
-- Domain (opsional)
-- Akun Cloudflare (opsional untuk akses online)
-
----
-
-🚀 Instalasi
-
-1. Persiapan Lingkungan
-
-Jalankan perintah berikut di Termux:
-
-pkg update && pkg upgrade -y
-pkg install nodejs git -y
-
-2. Clone Repository
-
-git clone https://github.com/ZulhanPedia/ServerQuu
-cd ServerQuu
-npm install
-
-Logo Kustom
-
-Jika ingin menggunakan logo sendiri, letakkan file:
-
-logo.png
-
-ke dalam folder:
-
-static/
-
----
-
-⚙️ Konfigurasi
-
-config.json
-
-Buat file "config.json" di direktori utama proyek.
-
-File ini digunakan untuk menyimpan kredensial Google Drive secara lokal dan aman.
-
-[
-  {
-    "id": 1,
-    "email": "akun_utama@gmail.com",
-    "client_id": "CLIENT_ID_GOOGLE_ANDA",
-    "client_secret": "CLIENT_SECRET_GOOGLE_ANDA",
-    "refresh_token": "REFRESH_TOKEN_AKUN_TERSEBUT"
-  }
-]
-
----
-
-db.json
-
-Buat file "db.json" di direktori utama proyek.
-
-{
-  "pin": "1234",
-  "files": [],
-  "logs": []
-}
-
----
-
-🔑 Konfigurasi Google Drive API
-
-Langkah 1 — Membuat Client ID & Client Secret
-
-1. Buka Google Cloud Console.
-2. Buat project baru.
-3. Aktifkan Google Drive API.
-4. Masuk ke menu OAuth Consent Screen.
-5. Pilih tipe pengguna External.
-6. Isi informasi aplikasi.
-7. Tambahkan akun Google Anda pada bagian Test Users.
-8. Masuk ke menu Credentials.
-9. Klik Create Credentials → OAuth Client ID.
-10. Pilih Desktop Application.
-11. Simpan dan catat:
-
-- Client ID
-- Client Secret
-
----
-
-Langkah 2 — Mendapatkan Refresh Token
-
-1. Buka Google OAuth Playground.
-2. Klik ikon ⚙️ Settings.
-3. Aktifkan Use your own OAuth credentials.
-4. Masukkan Client ID dan Client Secret.
-
-Masukkan scope berikut:
-
-https://www.googleapis.com/auth/drive
-
-5. Klik Authorize APIs.
-6. Login menggunakan akun Google Anda.
-7. Setujui seluruh izin yang diminta.
-8. Klik Exchange authorization code for tokens.
-9. Salin nilai Refresh Token.
-10. Masukkan Refresh Token ke dalam "config.json".
-
----
-
-▶️ Menjalankan Server
-
-Jalankan ServerQuu menggunakan:
-
-node server.js
-
-Setelah berhasil dijalankan, buka:
-
-http://localhost:3000
-
-PIN login bawaan:
-
-1234
-
-Disarankan untuk segera mengganti PIN setelah instalasi pertama.
-
----
-
-🌐 Akses Online dengan Cloudflare Tunnel
-
-Cloudflare Tunnel memungkinkan ServerQuu diakses dari internet secara aman tanpa:
-
-- Port Forwarding
-- IP Publik
-- VPS tambahan
-
----
-
-1. Instal Cloudflared
-
-pkg install cloudflared -y
-
----
-
-2. Login ke Cloudflare
-
-cloudflared tunnel login
-
-Ikuti proses otorisasi hingga berhasil.
-
----
-
-3. Buat Tunnel Baru
-
-cloudflared tunnel create serverquu-tunnel
-
-Simpan UUID yang diberikan.
-
----
-
-4. Buat Konfigurasi Tunnel
-
-☁️ ServerQuu
-
-<p align="center">
-  <img src="static/logo.png" alt="ServerQuu Logo" width="200">
-</p><p align="center">
-  <strong>Privat • Aman • Terpercaya</strong>
-</p><p align="center">
-  <img src="https://img.shields.io/github/license/ZulhanPedia/ServerQuu?style=for-the-badge" alt="License">
-  <img src="https://img.shields.io/github/stars/ZulhanPedia/ServerQuu?style=for-the-badge" alt="Stars">
-  <img src="https://img.shields.io/github/forks/ZulhanPedia/ServerQuu?style=for-the-badge" alt="Forks">
-  <img src="https://img.shields.io/github/issues/ZulhanPedia/ServerQuu?style=for-the-badge" alt="Issues">
-</p>---
-
-📖 Tentang ServerQuu
-
-ServerQuu adalah platform Virtual File System (VFS) dan Multi-Drive Cloud Storage Aggregator berbasis Node.js yang memungkinkan Anda mengelola banyak akun Google Drive dalam satu sistem penyimpanan virtual yang terintegrasi.
-
-Dirancang khusus untuk berjalan di Termux (Android), ServerQuu dapat dijalankan pada perangkat Android lama sebagai server cloud pribadi yang ringan, hemat daya, dan dapat diakses dari mana saja menggunakan Cloudflare Tunnel.
-
----
-
-📑 Daftar Isi
-
-- "✨ Fitur" (#-fitur)
-- "📋 Persyaratan" (#-persyaratan)
-- "🚀 Instalasi" (#-instalasi)
-- "⚙️ Konfigurasi" (#️-konfigurasi)
-- "🔑 Google Drive API" (#-google-drive-api)
-- "▶️ Menjalankan Server" (#️-menjalankan-server)
-- "🌐 Cloudflare Tunnel" (#-cloudflare-tunnel)
-- "📁 Struktur Direktori" (#-struktur-direktori)
-- "🛡️ Keamanan" (#️-keamanan)
-- "🤝 Kontribusi" (#-kontribusi)
-- "📄 Lisensi" (#-lisensi)
-
----
-
-✨ Fitur
-
-- ☁️ Multi Google Drive Aggregator
-- 📂 Virtual File System (VFS)
-- 📱 Support Android + Termux
-- 🔒 Login menggunakan PIN
-- 📊 Activity Logging
-- ⚡ Ringan dan hemat daya
-- 🌐 Akses online dengan Cloudflare Tunnel
-- 🔐 HTTPS gratis tanpa port forwarding
-- 🏠 Cocok untuk personal cloud storage
-
----
-
-📋 Persyaratan
-
-Pastikan perangkat Anda memiliki:
-
-- Android + Termux
-- Node.js
+- Node.js versi 18 atau lebih baru
 - Git
 - Akun Google Drive
 - Akun Cloudflare (opsional)
@@ -386,7 +78,7 @@ npm install
 
 3. Logo Kustom (Opsional)
 
-Letakkan file logo berikut:
+Letakkan file berikut:
 
 logo.png
 
@@ -398,9 +90,9 @@ static/
 
 ⚙️ Konfigurasi
 
-config.json
+File config.json
 
-Buat file "config.json" pada direktori utama.
+Buat file "config.json" pada direktori utama proyek.
 
 [
   {
@@ -412,11 +104,9 @@ Buat file "config.json" pada direktori utama.
   }
 ]
 
----
+File db.json
 
-db.json
-
-Buat file "db.json" pada direktori utama.
+Buat file "db.json" pada direktori utama proyek.
 
 {
   "pin": "1234",
@@ -428,15 +118,15 @@ Buat file "db.json" pada direktori utama.
 
 🔑 Google Drive API
 
-Membuat Client ID & Client Secret
+Membuat Client ID dan Client Secret
 
 1. Buka Google Cloud Console.
 2. Buat project baru.
 3. Aktifkan Google Drive API.
 4. Buka menu OAuth Consent Screen.
-5. Pilih External.
-6. Isi informasi aplikasi.
-7. Tambahkan akun pada bagian Test Users.
+5. Pilih tipe pengguna External.
+6. Lengkapi informasi aplikasi.
+7. Tambahkan akun Google pada bagian Test Users.
 8. Buka menu Credentials.
 9. Klik Create Credentials → OAuth Client ID.
 10. Pilih Desktop Application.
@@ -446,51 +136,67 @@ Membuat Client ID & Client Secret
 
 Mendapatkan Refresh Token
 
-Buka OAuth Playground dan gunakan scope berikut:
+1. Buka Google OAuth Playground.
+2. Klik ikon Settings (⚙️).
+3. Aktifkan Use your own OAuth credentials.
+4. Masukkan Client ID dan Client Secret.
+
+Gunakan scope berikut:
 
 https://www.googleapis.com/auth/drive
 
-Lakukan otorisasi akun Google dan salin Refresh Token yang dihasilkan ke dalam "config.json".
+5. Klik Authorize APIs.
+6. Login menggunakan akun Google.
+7. Berikan izin yang diminta.
+8. Klik Exchange authorization code for tokens.
+9. Salin Refresh Token yang dihasilkan.
+10. Masukkan ke dalam file "config.json".
 
 ---
 
 ▶️ Menjalankan Server
 
-Jalankan ServerQuu:
+Jalankan aplikasi:
 
 node server.js
 
-Aplikasi akan berjalan pada:
+Server akan berjalan pada:
 
 http://localhost:3000
 
-PIN default:
+PIN bawaan:
 
 1234
+
+Disarankan untuk segera mengganti PIN setelah instalasi pertama.
 
 ---
 
 🌐 Cloudflare Tunnel
 
-Install Cloudflared
+Instalasi Cloudflared
 
 pkg install cloudflared -y
 
-Login
+Login ke Cloudflare
 
 cloudflared tunnel login
 
-Buat Tunnel
+Ikuti proses otorisasi hingga berhasil.
+
+Membuat Tunnel
 
 cloudflared tunnel create serverquu-tunnel
 
-Konfigurasi Tunnel
+Catat UUID yang dihasilkan.
+
+Membuat Konfigurasi Tunnel
 
 Buat file:
 
 nano ~/.cloudflared/config.yml
 
-Isi dengan:
+Isi dengan konfigurasi berikut:
 
 tunnel: UUID-TUNNEL-ANDA
 credentials-file: /data/data/com.termux/files/home/.cloudflared/UUID-TUNNEL-ANDA.json
@@ -500,15 +206,15 @@ ingress:
     service: http://localhost:3000
   - service: http_status:404
 
-Hubungkan DNS
+Membuat DNS Record
 
 cloudflared tunnel route dns serverquu-tunnel drive.domainanda.com
 
-Jalankan Tunnel
+Menjalankan Tunnel
 
 nohup cloudflared tunnel run serverquu-tunnel > /dev/null 2>&1 &
 
-Akses ServerQuu melalui:
+Sekarang ServerQuu dapat diakses melalui:
 
 https://drive.domainanda.com
 
@@ -517,10 +223,8 @@ https://drive.domainanda.com
 📁 Struktur Direktori
 
 ServerQuu/
-│
 ├── static/
 │   └── logo.png
-│
 ├── config.json
 ├── db.json
 ├── server.js
@@ -533,8 +237,8 @@ ServerQuu/
 🛡️ Keamanan
 
 - Kredensial disimpan secara lokal
-- Tidak menyimpan data pada server pihak ketiga
-- HTTPS melalui Cloudflare Tunnel
+- Tidak menggunakan penyimpanan pihak ketiga
+- Mendukung HTTPS melalui Cloudflare Tunnel
 - Login menggunakan PIN
 - Aman digunakan pada jaringan publik
 
@@ -544,11 +248,12 @@ ServerQuu/
 
 Kontribusi sangat diterima.
 
-1. Fork repository
+1. Fork repository ini
 2. Buat branch baru
-3. Commit perubahan
-4. Push ke branch
-5. Buat Pull Request
+3. Lakukan perubahan
+4. Commit perubahan
+5. Push ke repository Anda
+6. Buat Pull Request
 
 ---
 
@@ -556,7 +261,7 @@ Kontribusi sangat diterima.
 
 Project ini menggunakan lisensi MIT License.
 
-Lihat file LICENSE untuk informasi lebih lanjut.
+Silakan lihat file "LICENSE" untuk informasi lebih lanjut.
 
 ---
 
@@ -565,7 +270,7 @@ Lihat file LICENSE untuk informasi lebih lanjut.
 Author: Izzuddin Badawi
 Branding: ZulhanPedia
 
-Dibuat dengan ❤️ menggunakan:
+Dibuat menggunakan:
 
 - Node.js
 - Google Drive API
