@@ -149,10 +149,10 @@ cloudflared tunnel login
 Ikuti proses otorisasi hingga berhasil.
 
 Membuat Tunnel (bisa diganti sesuai keinginan)
-
+```
 
 cloudflared tunnel create servertermux  <= ganti 
-
+```
 
 Catat UUID yang dihasilkan.
 
@@ -192,8 +192,8 @@ https://drive.domainanda.com
 ---
 
 📁 Struktur Direktori
-
-```ServerQuu/
+```teks
+ServerQuu/
 ├── static/
 │   └── logo.png
 ├── config.json
