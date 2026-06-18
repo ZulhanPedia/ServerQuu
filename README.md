@@ -223,7 +223,6 @@ Project ini menggunakan lisensi MIT License.
 👨‍💻 Kredit
 
 Author: Izzuddin Badawi
-Branding: ZulhanPedia
 
 Dibuat menggunakan:
 
