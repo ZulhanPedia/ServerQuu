@@ -140,57 +140,234 @@ pkg install cloudflared -y
 
 cloudflared tunnel login
 
-Ikuti proses otorisasi melalui browser hingga file sertifikat berhasil dibuat.
+☁️ ServerQuu
+
+Privat • Aman • Terpercaya
+
+ServerQuu adalah platform Virtual File System (VFS) dan Multi-Drive Cloud Storage Aggregator berbasis Node.js yang memungkinkan Anda menggabungkan beberapa akun Google Drive ke dalam satu sistem penyimpanan virtual yang terpusat.
+
+Dirancang khusus agar dapat berjalan secara ringan di Termux (Android), ServerQuu sangat cocok digunakan pada perangkat lama, HP cadangan, atau server pribadi berdaya rendah.
 
 ---
 
-4. Buat Tunnel Baru
+✨ Fitur Utama
+
+- ☁️ Agregasi banyak akun Google Drive
+- 📂 Virtual File System (VFS)
+- 📱 Berjalan langsung di Android melalui Termux
+- 🔒 Sistem keamanan berbasis PIN
+- 📊 Pencatatan aktivitas dan log
+- ⚡ Ringan dan hemat sumber daya
+- 🌐 Dapat diakses dari mana saja menggunakan Cloudflare Tunnel
+- 🔐 HTTPS gratis tanpa port forwarding
+- 🏠 Cocok untuk server pribadi dan backup data
+
+---
+
+📋 Persyaratan
+
+Sebelum memulai, pastikan Anda memiliki:
+
+- Android dengan aplikasi Termux
+- Node.js
+- Git
+- Akun Google Drive
+- Domain (opsional)
+- Akun Cloudflare (opsional untuk akses online)
+
+---
+
+🚀 Instalasi
+
+1. Persiapan Lingkungan
+
+Jalankan perintah berikut di Termux:
+
+pkg update && pkg upgrade -y
+pkg install nodejs git -y
+
+2. Clone Repository
+
+git clone https://github.com/ZulhanPedia/ServerQuu
+cd ServerQuu
+npm install
+
+Logo Kustom
+
+Jika ingin menggunakan logo sendiri, letakkan file:
+
+logo.png
+
+ke dalam folder:
+
+static/
+
+---
+
+⚙️ Konfigurasi
+
+config.json
+
+Buat file "config.json" di direktori utama proyek.
+
+File ini digunakan untuk menyimpan kredensial Google Drive secara lokal dan aman.
+
+[
+  {
+    "id": 1,
+    "email": "akun_utama@gmail.com",
+    "client_id": "CLIENT_ID_GOOGLE_ANDA",
+    "client_secret": "CLIENT_SECRET_GOOGLE_ANDA",
+    "refresh_token": "REFRESH_TOKEN_AKUN_TERSEBUT"
+  }
+]
+
+---
+
+db.json
+
+Buat file "db.json" di direktori utama proyek.
+
+{
+  "pin": "1234",
+  "files": [],
+  "logs": []
+}
+
+---
+
+🔑 Konfigurasi Google Drive API
+
+Langkah 1 — Membuat Client ID & Client Secret
+
+1. Buka Google Cloud Console.
+2. Buat project baru.
+3. Aktifkan Google Drive API.
+4. Masuk ke menu OAuth Consent Screen.
+5. Pilih tipe pengguna External.
+6. Isi informasi aplikasi.
+7. Tambahkan akun Google Anda pada bagian Test Users.
+8. Masuk ke menu Credentials.
+9. Klik Create Credentials → OAuth Client ID.
+10. Pilih Desktop Application.
+11. Simpan dan catat:
+
+- Client ID
+- Client Secret
+
+---
+
+Langkah 2 — Mendapatkan Refresh Token
+
+1. Buka Google OAuth Playground.
+2. Klik ikon ⚙️ Settings.
+3. Aktifkan Use your own OAuth credentials.
+4. Masukkan Client ID dan Client Secret.
+
+Masukkan scope berikut:
+
+https://www.googleapis.com/auth/drive
+
+5. Klik Authorize APIs.
+6. Login menggunakan akun Google Anda.
+7. Setujui seluruh izin yang diminta.
+8. Klik Exchange authorization code for tokens.
+9. Salin nilai Refresh Token.
+10. Masukkan Refresh Token ke dalam "config.json".
+
+---
+
+▶️ Menjalankan Server
+
+Jalankan ServerQuu menggunakan:
+
+node server.js
+
+Setelah berhasil dijalankan, buka:
+
+http://localhost:3000
+
+PIN login bawaan:
+
+1234
+
+Disarankan untuk segera mengganti PIN setelah instalasi pertama.
+
+---
+
+🌐 Akses Online dengan Cloudflare Tunnel
+
+Cloudflare Tunnel memungkinkan ServerQuu diakses dari internet secara aman tanpa:
+
+- Port Forwarding
+- IP Publik
+- VPS tambahan
+
+---
+
+1. Instal Cloudflared
+
+pkg install cloudflared -y
+
+---
+
+2. Login ke Cloudflare
+
+cloudflared tunnel login
+
+Ikuti proses otorisasi hingga berhasil.
+
+---
+
+3. Buat Tunnel Baru
 
 cloudflared tunnel create serverquu-tunnel
 
-Simpan UUID tunnel yang ditampilkan.
+Simpan UUID yang diberikan.
 
 ---
 
-5. Buat File Konfigurasi Tunnel
+4. Buat Konfigurasi Tunnel
 
 nano ~/.cloudflared/config.yml
 
-Isi dengan konfigurasi berikut:
+Isi file dengan:
 
-tunnel: <UUID-TUNNEL-ANDA>
-credentials-file: /data/data/com.termux/files/home/.cloudflared/<UUID-TUNNEL-ANDA>.json
+tunnel: UUID-TUNNEL-ANDA
+credentials-file: /data/data/com.termux/files/home/.cloudflared/UUID-TUNNEL-ANDA.json
 
 ingress:
   - hostname: drive.domainanda.com
     service: http://localhost:3000
   - service: http_status:404
 
-Simpan file lalu keluar dari editor.
+Simpan konfigurasi.
 
 ---
 
-6. Buat DNS Record Otomatis
+5. Hubungkan DNS
 
 cloudflared tunnel route dns serverquu-tunnel drive.domainanda.com
 
 ---
 
-7. Jalankan Tunnel di Background
+6. Jalankan Tunnel
 
 nohup cloudflared tunnel run serverquu-tunnel > /dev/null 2>&1 &
 
-Sekarang ServerQuu dapat diakses secara aman menggunakan domain pribadi Anda:
+Sekarang ServerQuu dapat diakses melalui:
 
 https://drive.domainanda.com
 
 ---
 
-📂 Struktur Berkas
+📁 Struktur Direktori
 
 ServerQuu/
+│
 ├── static/
 │   └── logo.png
+│
 ├── config.json
 ├── db.json
 ├── server.js
@@ -201,25 +378,41 @@ ServerQuu/
 
 🛡️ Keamanan
 
-- Kredensial tidak disimpan di browser.
-- Mendukung HTTPS melalui Cloudflare Tunnel.
-- Login menggunakan PIN.
-- Data akun disimpan secara lokal.
-- Tidak memerlukan port forwarding.
+ServerQuu dirancang dengan fokus pada privasi pengguna:
+
+- Kredensial disimpan secara lokal
+- Tidak ada penyimpanan data pihak ketiga
+- Mendukung HTTPS melalui Cloudflare Tunnel
+- Login menggunakan PIN
+- Aman digunakan pada jaringan publik
 
 ---
 
 🤝 Kontribusi
 
-Kontribusi, perbaikan bug, dan pengembangan fitur baru sangat diterima. Silakan lakukan fork repository ini dan kirimkan Pull Request.
+Kontribusi selalu diterima.
+
+Jika menemukan bug atau memiliki ide pengembangan:
+
+1. Fork repository ini
+2. Buat branch baru
+3. Lakukan perubahan
+4. Buat Pull Request
 
 ---
 
-📜 Lisensi
+📄 Lisensi
 
-Copyright © 2026 ZulhanPedia
+Proyek ini menggunakan lisensi MIT License.
+
+Lihat file "LICENSE" untuk informasi lebih lanjut.
+
+---
+
+👨‍💻 Kredit
 
 Author: Izzuddin Badawi
-Branding: ZulhanPedia
 
-Dibuat dengan ❤️ menggunakan Node.js, Google Drive API, Cloudflare Tunnel, dan Termux.
+---
+
+ServerQuu — Privat, Aman, Terpercaya ☁️
