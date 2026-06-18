@@ -20,22 +20,6 @@ ServerQuu dirancang khusus agar dapat berjalan dengan stabil pada Termux Android
 
 ---
 
-📑 Daftar Isi
-
-- "Fitur" (#-fitur)
-- "Persyaratan" (#-persyaratan)
-- "Instalasi" (#-instalasi)
-- "Konfigurasi" (#️-konfigurasi)
-- "Google Drive API" (#-google-drive-api)
-- "Menjalankan Server" (#️-menjalankan-server)
-- "Cloudflare Tunnel" (#-cloudflare-tunnel)
-- "Struktur Direktori" (#-struktur-direktori)
-- "Keamanan" (#️-keamanan)
-- "Kontribusi" (#-kontribusi)
-- "Lisensi" (#-lisensi)
-
----
-
 ✨ Fitur
 
 - ☁️ Multi Google Drive Aggregator
@@ -72,8 +56,10 @@ pkg install nodejs git -y
 
 2. Clone Repository
 
-git clone https://github.com/ZulhanPedia/ServerQuu.git
+git clone https://github.com/ZulhanPedia/ServerQuu
+
 cd ServerQuu
+
 npm install
 
 3. Logo Kustom (Opsional)
@@ -88,33 +74,6 @@ static/
 
 ---
 
-⚙️ Konfigurasi
-
-File config.json
-
-Buat file "config.json" pada direktori utama proyek.
-
-[
-  {
-    "id": 1,
-    "email": "akun_utama@gmail.com",
-    "client_id": "CLIENT_ID_GOOGLE_ANDA",
-    "client_secret": "CLIENT_SECRET_GOOGLE_ANDA",
-    "refresh_token": "REFRESH_TOKEN_AKUN_TERSEBUT"
-  }
-]
-
-File db.json
-
-Buat file "db.json" pada direktori utama proyek.
-
-{
-  "pin": "1234",
-  "files": [],
-  "logs": []
-}
-
----
 
 🔑 Google Drive API
 
@@ -198,6 +157,7 @@ nano ~/.cloudflared/config.yml
 
 Isi dengan konfigurasi berikut:
 
+```yaml
 tunnel: UUID-TUNNEL-ANDA
 credentials-file: /data/data/com.termux/files/home/.cloudflared/UUID-TUNNEL-ANDA.json
 
@@ -205,6 +165,7 @@ ingress:
   - hostname: drive.domainanda.com
     service: http://localhost:3000
   - service: http_status:404
+```
 
 Membuat DNS Record
 
@@ -241,27 +202,11 @@ ServerQuu/
 - Mendukung HTTPS melalui Cloudflare Tunnel
 - Login menggunakan PIN
 - Aman digunakan pada jaringan publik
-
----
-
-🤝 Kontribusi
-
-Kontribusi sangat diterima.
-
-1. Fork repository ini
-2. Buat branch baru
-3. Lakukan perubahan
-4. Commit perubahan
-5. Push ke repository Anda
-6. Buat Pull Request
-
 ---
 
 📄 Lisensi
 
 Project ini menggunakan lisensi MIT License.
-
-Silakan lihat file "LICENSE" untuk informasi lebih lanjut.
 
 ---
 
