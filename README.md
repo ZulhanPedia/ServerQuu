@@ -60,7 +60,7 @@ git clone https://github.com/ZulhanPedia/ServerQuu
 
 cd ServerQuu
 
-npm install
+npm install express multer googleapis
 
 node server.js
 ```
