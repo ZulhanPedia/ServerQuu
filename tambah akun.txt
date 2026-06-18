@@ -1,0 +1,33 @@
+[
+  {
+    "id": 7,
+    "email": "email_drive_7@gmail.com",
+    "client_id": "CLIENT_ID_GOOGLE_ANDA",
+    "client_secret": "CLIENT_SECRET_GOOGLE_ANDA",
+    "refresh_token": "REFRESH_TOKEN_AKUN_TERSEBUT"
+  },
+  {
+    "id": 8,
+    "email": "email_drive_8@gmail.com",
+    "client_id": "CLIENT_ID_GOOGLE_ANDA",
+    "client_secret": "CLIENT_SECRET_GOOGLE_ANDA",
+    "refresh_token": "REFRESH_TOKEN_AKUN_TERSEBUT"
+  }
+  {
+    "id": 9,
+    "email": "email_drive_9@gmail.com",
+    "client_id": "CLIENT_ID_GOOGLE_ANDA",
+    "client_secret": "CLIENT_SECRET_GOOGLE_ANDA",
+    "refresh_token": "REFRESH_TOKEN_AKUN_TERSEBUT"
+  },
+  {
+    "id": 9,
+    "email": "email_drive_9@gmail.com",
+    "client_id": "CLIENT_ID_GOOGLE_ANDA",
+    "client_secret": "CLIENT_SECRET_GOOGLE_ANDA",
+    "refresh_token": "REFRESH_TOKEN_AKUN_TERSEBUT"
+  },
+]
+
+
+Copas dan taruh pada Config.json jika ingin menambah akun.

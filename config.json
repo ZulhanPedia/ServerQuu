@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "email": "email_drive_1@gmail.com",
+    "client_id": "CLIENT_ID_GOOGLE_ANDA",
+    "client_secret": "CLIENT_SECRET_GOOGLE_ANDA",
+    "refresh_token": "REFRESH_TOKEN_AKUN_TERSEBUT"
+  },
+  {
+    "id": 2,
+    "email": "email_drive_2@gmail.com",
+    "client_id": "CLIENT_ID_GOOGLE_ANDA",
+    "client_secret": "CLIENT_SECRET_GOOGLE_ANDA",
+    "refresh_token": "REFRESH_TOKEN_AKUN_TERSEBUT"
+  }
+  {
+    "id": 3,
+    "email": "email_drive_3@gmail.com",
+    "client_id": "CLIENT_ID_GOOGLE_ANDA",
+    "client_secret": "CLIENT_SECRET_GOOGLE_ANDA",
+    "refresh_token": "REFRESH_TOKEN_AKUN_TERSEBUT"
+  },
+  {
+    "id": 4,
+    "email": "email_drive_4@gmail.com",
+    "client_id": "CLIENT_ID_GOOGLE_ANDA",
+    "client_secret": "CLIENT_SECRET_GOOGLE_ANDA",
+    "refresh_token": "REFRESH_TOKEN_AKUN_TERSEBUT"
+  },
+]
