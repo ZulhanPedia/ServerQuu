@@ -1,4 +1,4 @@
-Changelog:
+Changelog 1.0.1:
 
 • Pemilihan folder tujuan unggah berkas secara langsung dan interaktif
 • Pembuatan folder baru secara instan di Google Drive melalui Web UI
@@ -10,3 +10,31 @@ Changelog:
 • Desain antarmuka premium dengan palet warna Sky Blue & Deep Navy yang selaras dengan logo
 • Sinkronisasi otomatis array logs dan files pada db.json untuk mencegah server crash
 • Perbaikan fitur keamanan PIN (kosong otomatis jika salah) dan integrasi token OAuth dinamis
+
+changelog 1.1.1:
+1. Menu Tambah Akun / Email Secara Manual
+Detail: Penambahan sub-menu "Tambah Akun Google Drive" di dalam Tab Pengaturan.
+Fungsi: Memungkinkan Anda untuk mengintegrasikan email Google Drive baru beserta kredensialnya (Client ID, Client Secret, dan Refresh Token) secara manual langsung melalui halaman Web UI tanpa perlu repot membuka dan mengedit file config.json secara manual lewat terminal Termux.
+2. Menu Pemilihan Akun Penyimpanan Manual (Form Unggah)
+Detail: Penambahan dropdown interaktif "1. Akun Penyimpanan" pada menu Unggah File Baru.
+Fungsi: Anda kini bebas menentukan secara spesifik email target penyimpanan cloud untuk berkas Anda, atau membiarkannya tetap berada di pilihan default "Pilih Otomatis (Rekomendasi Cek Quota)" agar server mencari drive terlonggar secara cerdas.
+3. Menu Pemilihan Folder Tujuan Secara Manual
+Detail: Penambahan dropdown dinamis "2. Folder Tujuan" pada menu Unggah File Baru.
+Fungsi: Folder tujuan tidak lagi diketik secara manual. Sistem akan secara otomatis dan real-time membaca daftar folder yang ada di dalam Google Drive dari email yang Anda pilih sehingga Anda tinggal memilih folder tujuan dengan sekali klik.
+4. Menu Pembuatan Folder Baru Secara Instan (+ Folder)
+Detail: Penambahan tombol interaktif "📁 + Folder" di samping menu pilihan folder pada form unggah.
+Fungsi: Memungkinkan Anda membuat folder penyimpanan baru secara langsung pada akun Google Drive terpilih tanpa harus masuk ke aplikasi Google Drive resmi. Folder yang baru dibuat akan otomatis terpilih sebagai target unggahan.
+5. Menu Filter Kategori File Cepat
+Detail: Penambahan menu tombol filter kategori berbasis ekstensi berkas di bagian atas tabel File Explorer Virtual.
+Fungsi: Anda dapat menyaring daftar file secara instan hanya dengan menekan kategori:
+🖼️ Gambar: JPG, JPEG, PNG, GIF, WEBP, SVG, BMP.
+🎬 Video: MP4, MKV, AVI, MOV, WEBM, FLV, 3GP.
+📦 Arsip: ZIP, RAR, TAR, GZ, 7Z, ISO.
+📱 Aplikasi: APK, XAPK, IPA, DEB, MTZ.
+📝 Dokumen: PDF, DOCX, XLSX, PPTX, TXT, EPUB, RTF.
+6. Menu Navigasi Geser (Facebook-Style Swipe Gesture)
+Detail: Integrasi fitur deteksi usapan layar (touch gesture).
+Fungsi: Pengguna perangkat HP/Mobile kini dapat berpindah-pindah antar-tab menu (Akun Terhubung ↔️ Unggah ↔️ Explorer ↔️ Log ↔️ Pengaturan) hanya dengan menggeser layar ke kanan atau ke kiri secara mulus.
+7. Pengunci State Dropdown Aktif
+Detail: Sistem penjaga data pilihan form unggahan.
+Fungsi: Menjamin pilihan email, folder, dan berkas yang sedang Anda siapkan tidak akan ter-reset kembali ke pengaturan awal ("Pilih Otomatis") saat Anda berpindah tab ke menu File Explorer lalu kembali ke menu Unggah.
