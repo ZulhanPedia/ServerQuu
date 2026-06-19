@@ -1612,7 +1612,7 @@ app.listen(PORT, '0.0.0.0', () => {
     console.log(padStr + cyan + "├──────────────────────────────────────────────────────────┤" + reset);
     console.log(padStr + cyan + "│ " + yellow + "Author    :" + white + " Izzuddin Badawi                               " + cyan + "│" + reset);
     console.log(padStr + cyan + "│ " + yellow + "Telegram  :" + white + " @Hyperos_id                                   " + cyan + "│" + reset);
-    console.log(padStr + cyan + "│ " + yellow + "Version   :" + white + " 1.1.0                                         " + cyan + "│" + reset);
+    console.log(padStr + cyan + "│ " + yellow + "Version   :" + white + " 1.1.1                                         " + cyan + "│" + reset);
     console.log(padStr + cyan + "│ " + yellow + "Config    :" + white + " config.json                                   " + cyan + "│" + reset);
     console.log(padStr + cyan + "│ " + yellow + "Sementar  :" + white + " ./tmp/                                        " + cyan + "│" + reset);
     console.log(padStr + cyan + "│ " + yellow + "Local Link:" + cyan + bold + " http://localhost:" + PORT + " ".repeat(Math.max(0, 24 - (PORT.toString().length - 4))) + cyan + "│" + reset);
