@@ -38,3 +38,6 @@ Fungsi: Pengguna perangkat HP/Mobile kini dapat berpindah-pindah antar-tab menu 
 7. Pengunci State Dropdown Aktif
 Detail: Sistem penjaga data pilihan form unggahan.
 Fungsi: Menjamin pilihan email, folder, dan berkas yang sedang Anda siapkan tidak akan ter-reset kembali ke pengaturan awal ("Pilih Otomatis") saat Anda berpindah tab ke menu File Explorer lalu kembali ke menu Unggah.
+
+changelog 1.2.0:
+Penambahan fitur auto broadcast telegram dengan custom bot token, ID Chat atau Channel
